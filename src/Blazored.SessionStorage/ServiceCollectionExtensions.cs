@@ -11,23 +11,23 @@ namespace Blazored.SessionStorage
         {
             return services
                 .AddScoped<ISessionStorageService, SessionStorageService>()
-                .AddScoped<ISyncSessionStorageService, SessionStorageService>()
-                .Configure<SessionStorageOptions>(configureOptions =>
-                {
-                    configureOptions.JsonSerializerOptions.Converters.Add(new TimespanJsonConverter());
-                });
+                .AddScoped<ISyncSessionStorageService, SessionStorageService>();
+                //.Configure<SessionStorageOptions>(configureOptions =>
+                //{
+                //    configureOptions.JsonSerializerOptions.Converters.Add(new TimespanJsonConverter());
+                //});
         }
 
         public static IServiceCollection AddBlazoredSessionStorage(this IServiceCollection services, Action<SessionStorageOptions> configure)
         {
             return services
                 .AddScoped<ISessionStorageService, SessionStorageService>()
-                .AddScoped<ISyncSessionStorageService, SessionStorageService>()
-                .Configure<SessionStorageOptions>(configureOptions =>
-                {
-                    configure?.Invoke(configureOptions);
-                    configureOptions.JsonSerializerOptions.Converters.Add(new TimespanJsonConverter());
-                });
+                .AddScoped<ISyncSessionStorageService, SessionStorageService>();
+                //.Configure<SessionStorageOptions>(configureOptions =>
+                //{
+                //    configure?.Invoke(configureOptions);
+                //    configureOptions.JsonSerializerOptions.Converters.Add(new TimespanJsonConverter());
+                //});
         }
     }
 }
